@@ -58,8 +58,9 @@
 % for defining colors
 \definecolor{green-2}{HTML}{00FF6B}
 \definecolor{blue-2}{HTML}{3090F3}
-\definecolor{purple-2}{HTML}{6F2FBE}
-\definecolor{black-2}{HTML}{121212}
+\definecolor{yellow-2}{HTML}{F3E530}
+\definecolor{gray-2}{HTML}{4A535D}
+\definecolor{black-2}{HTML}{12161A}
 
 % any = for Simple UI and Advanced UI
 \colorlet{any-draw}{green-2}
@@ -88,11 +89,11 @@
 \colorlet{onoff-text}{onoff-draw}
 
 % any... mode = for Batt Check from OFF
-\colorlet{anyconfigmode-draw}{purple-2}
+\colorlet{anyconfigmode-draw}{yellow-2}
 
 % advanced... mode = for strobe modes and blinky modes
 \colorlet{advancedconfigmode-draw}{anyconfigmode-draw}
-\colorlet{advancedfit-draw}{advancedconfigmode-draw}
+\colorlet{advancedfit-draw}{gray-2}
 
 % for basic use
 \colorlet{basicuse-draw}{any-draw}
@@ -107,9 +108,9 @@
 \colorlet{rampcombinedinside2-draw}{rampsmooth-topbottom}
 
 % for further information
-\colorlet{generalinfo-draw}{anyconfigmode-draw}
+\colorlet{generalinfo-draw}{advancedfit-draw}
 \colorlet{generalinfo-fill}{anybutton-fill}
-\colorlet{andurilinfo-draw}{onoff-draw}
+\colorlet{andurilinfo-draw}{anyconfigmode-draw}
 \colorlet{andurilinfo-text}{andurilinfo-draw}
 
 % for voltage colors
@@ -634,7 +635,7 @@
 at (current page.center)[
     rampsmooth,
     anchor=east,
-    top color=rampsmooth-topbottom!40,
+    top color=rampsmooth-topbottom!60,
     bottom color=rampsmooth-topbottom!90
 ]
 {};
@@ -643,7 +644,7 @@ at (current page.center)[
     rampstepped,
     right=0cm of Ramp Smooth.south east,
     anchor=south west,
-    top color=rampstepped-topbottom,
+    top color=rampstepped-topbottom!96,
     bottom color=rampstepped-topbottom!90
 ]
 {};
@@ -653,7 +654,7 @@ at (current page.center)[
     above=0cm of Ramp Stepped 1-2.north,
     anchor=south,
     top color=rampstepped-topbottom!90,
-    bottom color=rampstepped-topbottom!80
+    bottom color=rampstepped-topbottom!84
 ]
 {};
 
@@ -661,8 +662,8 @@ at (current page.center)[
     rampstepped,
     above=0cm of Ramp Stepped 2-3.north,
     anchor=south,
-    top color=rampstepped-topbottom!80,
-    bottom color=rampstepped-topbottom!70
+    top color=rampstepped-topbottom!84,
+    bottom color=rampstepped-topbottom!78
 ]
 {};
 
@@ -670,8 +671,8 @@ at (current page.center)[
     rampstepped,
     above=0cm of Ramp Stepped 3-4.north,
     anchor=south,
-    top color=rampstepped-topbottom!70,
-    bottom color=rampstepped-topbottom!60
+    top color=rampstepped-topbottom!78,
+    bottom color=rampstepped-topbottom!72
 ]
 {};
 
@@ -679,8 +680,8 @@ at (current page.center)[
     rampstepped,
     above=0cm of Ramp Stepped 4-5.north,
     anchor=south,
-    top color=rampstepped-topbottom!60,
-    bottom color=rampstepped-topbottom!50
+    top color=rampstepped-topbottom!72,
+    bottom color=rampstepped-topbottom!66
 ]
 {};
 
@@ -688,8 +689,8 @@ at (current page.center)[
     rampstepped,
     above=0cm of Ramp Stepped 5-6.north,
     anchor=south,
-    top color=rampstepped-topbottom!50,
-    bottom color=rampstepped-topbottom!40
+    top color=rampstepped-topbottom!66,
+    bottom color=rampstepped-topbottom!60
 ]
 {};
 
@@ -2634,7 +2635,7 @@ at (current page text area.north east)[
 {
     \Huge\textbf{Andúril 2 UI}\\[8pt]
     \normalsize Andúril 2 Release 2025-07-07\\[3pt]
-    \normalsize Diagram Release Dark-01\\[4pt]
+    \normalsize Diagram Release Dark-02\\[4pt]
     Diagram Repository:\\
     https://github.com/dirtydancing/\\
     anduril-tikz-diagram-dark
