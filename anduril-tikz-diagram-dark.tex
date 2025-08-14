@@ -125,6 +125,7 @@
 
 % for configuring Simple UI
 \colorlet{simpleUIconfig-draw}{advanced-draw}
+\colorlet{inherited-text}{advanced-text}
 
 % for setting the page background color
 \pagecolor{anybutton-fill} % default: transparent background
@@ -597,7 +598,7 @@
 
 % for inherited by Simple UI
 % (Unicode character Asterisk)
-\newcommand{\inherited}{\char"002A}
+\newcommand{\inherited}{\textcolor{inherited-text}{\char"002A}}
 
 % for the next aux LED setting
 % (Unicode character Rightwards Arrow)
@@ -2703,8 +2704,8 @@ at (current page text area.north east)[
     & \infotextadvanced{Advanced UI function only}\\
     & Continuous effect\vphantom{y}\\
     & Momentary effect\\
-    \normalsize\textbf{\infotextadvanced{\inherited{}}}&
-    \infotextadvanced{Inherited by Simple UI}\\
+    \normalsize\textbf{\inherited{}}&
+    \textcolor{inherited-text}{Inherited by Simple UI}\\
 };
 
 \draw (Legend-1-1.west) edge[
