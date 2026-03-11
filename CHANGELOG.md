@@ -2,6 +2,10 @@
 
 ## Next
 
+## 2025-07-07.dark-05 (Date: 2026-03-11)
+
+- Adapted diagram-dark to updated diagram
+
 ## 2025-07-07.dark-04 (Date: 2025-08-20)
 
 - Increased visibility of ramp text
