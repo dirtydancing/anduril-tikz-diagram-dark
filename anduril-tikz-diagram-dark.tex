@@ -1,5 +1,5 @@
 % Diagram for the Anduril 2 UI, dark mode edition
-% Copyright (C) 2025 Guido dirtydancing
+% Copyright (C) 2025-2026 Guido dirtydancing
 % SPDX-License-Identifier: GPL-3.0-or-later
 
 % Preamble - Table of Contents -----------------------------------------
@@ -60,49 +60,78 @@
 
 % for defining colors
 \definecolor{green-2}{HTML}{00FF6B}
+\definecolor{black-2}{HTML}{12161A}
 \definecolor{blue-2}{HTML}{3090F3}
 \definecolor{yellow-2}{HTML}{F3EA6D}
 \definecolor{gray-2}{HTML}{4A535D}
-\definecolor{black-2}{HTML}{12161A}
+\definecolor{orange-2}{HTML}{FF994E}
 
 % any = for Simple UI and Advanced UI
 \colorlet{any-draw}{green-2}
-\colorlet{anybutton-fill}{black-2}
-\colorlet{anyconfig-fill}{anybutton-fill}
+\colorlet{anyconfig-draw}{any-draw}
+\colorlet{anyconfig-fill}{black-2}
 \colorlet{any-text}{any-draw}
+\colorlet{anybutton-draw}{anyconfig-draw}
+\colorlet{anybutton-fill}{anyconfig-fill}
+\colorlet{anybutton-text}{any-text}
 
 % advanced = for Advanced UI only
 \colorlet{advanced-draw}{blue-2}
-\colorlet{advancedbutton-fill}{anybutton-fill}
+\colorlet{advancedconfig-draw}{advanced-draw}
 \colorlet{advancedconfig-fill}{anyconfig-fill}
 \colorlet{advanced-text}{advanced-draw}
+\colorlet{advancedbutton-fill}{anybutton-fill}
+\colorlet{advancedbutton-text}{advanced-text}
 \colorlet{advancedUI-draw}{advanced-draw}
 
+% for Advanced UI - config menus
+\colorlet{advancedconfigmenu-draw}{advancedconfig-draw}
+\colorlet{advancedconfigmenu-fill}{advancedconfig-fill}
+\colorlet{advancedconfigmenu-text}{advancedconfigmenu-draw}
+
+% for Advanced UI - Simple UI config menu
+\colorlet{simpleUIconfigmenu-draw}{yellow-2}
+\colorlet{inherited-text}{simpleUIconfigmenu-draw}
+
 % simple = for Simple UI only
+\colorlet{simple-draw}{any-draw}
 \colorlet{simplebutton-double}{anybutton-fill}
 \colorlet{simpleUI-draw}{any-draw}
 \colorlet{simple-text}{any-text}
 
+% for UI switch lines
+\colorlet{advancedUIswitchline-draw}{simpleUIconfigmenu-draw}
+\colorlet{simpleUIswitchline-draw}{advancedUIswitchline-draw}
+
 % for Extended Simple UI
+\colorlet{extendedsimpleUI-draw}{any-draw}
 \colorlet{extendedsimpleUI-fill}{anybutton-fill}
 
 % for On, Ramp, Off, and Lockout
 \colorlet{onoff-draw}{white}
 \colorlet{onoffbutton-fill}{anybutton-fill}
 \colorlet{onoff-text}{onoff-draw}
+\colorlet{onofframplabel-draw}{any-draw}
+\colorlet{onofframplabel-fill}{onoffbutton-fill}
+\colorlet{onofframplabel-text}{any-text}
+\colorlet{onofftogglerampstyle-draw}{advanced-draw}
+\colorlet{onofftogglerampstyle-fill}{onoffbutton-fill}
+\colorlet{onofftogglerampstyle-text}{advanced-text}
 
 % any... mode = for Batt Check from OFF
-\colorlet{anyconfigmode-draw}{yellow-2}
+\colorlet{anyconfigmode-draw}{simpleUIconfigmenu-draw}
 
 % advanced... mode = for strobe modes and blinky modes
 \colorlet{advancedconfigmode-draw}{anyconfigmode-draw}
-\colorlet{advancedfit-draw}{gray-2}
+\colorlet{advancedbordermode-draw}{gray-2}
 
 % for basic use
-\colorlet{basicuse-draw}{any-draw}
-\colorlet{anybuttonbasicuse-fill}{onoff-draw}
-\colorlet{basicuse-text}{anybutton-fill}
-\colorlet{fillarrow}{anybutton-fill}
+\colorlet{basicuse-draw}{orange-2}
+\colorlet{anybuttonbasicuse-draw}{basicuse-draw}
+\colorlet{anybuttonbasicuse-fill}{anybutton-fill}
+\colorlet{basicuse-text}{any-text}
+\colorlet{buttonpressesbasicuse-draw}{basicuse-draw}
+\colorlet{fillarrowbasicuse}{anybutton-fill}
 
 % for ramp image
 \colorlet{rampsmooth-topbottom}{anybutton-fill}
@@ -113,32 +142,53 @@
 % for ramp text Memory, Ceiling, and Floor
 \colorlet{ramptextconfig-fill}{anyconfig-fill}
 
-% for further information
-\colorlet{generalinfo-draw}{advancedfit-draw}
+% for line from Factory Reset to Simple UI
+\colorlet{factoryresetsimpleUI-draw}{advancedUIswitchline-draw}
+
+% for general information
+\colorlet{generalinfo-draw}{advancedbordermode-draw}
 \colorlet{generalinfo-fill}{anybutton-fill}
-\colorlet{andurilinfo-draw}{anyconfigmode-draw}
+\colorlet{andurilinfo-draw}{simpleUIconfigmenu-draw}
+\colorlet{andurilinfo-fill}{generalinfo-fill}
 \colorlet{andurilinfo-text}{andurilinfo-draw}
+\colorlet{voltagecolorinfo-fill}{generalinfo-fill}
+\colorlet{buttonpressesinfo-fill}{generalinfo-fill}
+\colorlet{defaultsvaryinfo-fill}{generalinfo-fill}
+\colorlet{matrixlegendinfo-fill}{generalinfo-fill}
 
 % for voltage colors
 \colorlet{voltagebox-frame}{anybutton-fill}
+\colorlet{voltagebox-text}{any-draw!50}
 \colorlet{voltagebox-mixfill}{voltagebox-frame}
-\colorlet{voltagebox-text}{onoff-draw!75!voltagebox-frame}
+\colorlet{voltageboxcolor-red}{red!25!voltagebox-mixfill}
+\colorlet{voltageboxcolor-yellow}{yellow!25!voltagebox-mixfill}
+\colorlet{voltageboxcolor-green}{green!25!voltagebox-mixfill}
+\colorlet{voltageboxcolor-cyan}{cyan!25!voltagebox-mixfill}
+\colorlet{voltageboxcolor-blue}{blue!25!voltagebox-mixfill}
+\colorlet{voltageboxcolor-purple}{purple!25!voltagebox-mixfill}
+\colorlet{voltageboxadv-text}{advanced-draw!50}
+
+% for tint ramp colors
+\colorlet{tintrampbox-frame}{voltagebox-frame}
+\colorlet{tintrampbox-mixfill}{voltagebox-mixfill}
+\colorlet{tintrampboxcolor-left}{magenta!20!tintrampbox-mixfill}
+\colorlet{tintrampboxcolor-right}{orange!20!tintrampbox-mixfill}
+\colorlet{tintrampbox-text}{voltagebox-text}
+\colorlet{tintrampboxadv-text}{voltageboxadv-text}
 
 % for infotext
 \colorlet{infoany-text}{any-text}
 \colorlet{infoadvanced-text}{advanced-text}
+\colorlet{infoadvancedconfigmenu-text}{advancedconfigmenu-text}
 \colorlet{infosimple-text}{simple-text}
 
-% for configuring Simple UI
-\colorlet{simpleUIconfig-draw}{anyconfigmode-draw}
-\colorlet{inherited-text}{simpleUIconfig-draw}
-
 % for setting the page background color
-\pagecolor{anybutton-fill} % default: transparent background
+\pagecolor{anyconfig-fill} % default: transparent background
 
 % Preamble - 03 tikz ---------------------------------------------------
 % ----------------------------------------------------------------------
 \usepackage{tikz} % for creating graphics
+% tikz package is also loaded by tcolorbox package
 
 \usetikzlibrary{arrows.meta} % for Stealth arrow tip
 
@@ -163,6 +213,8 @@
 % for layers: { [on background layer] ... }
 
 \usetikzlibrary{calc} % for coordinate calculations
+
+\usetikzlibrary{tikzmark} % for marking a point for further use
 
 % for arrow tip
 \tikzset{
@@ -190,18 +242,8 @@
         densely dashed,
         line cap=round
     },
-    anybutton/.style={
-        draw=any-draw,
-        thin,
-        solid,
-        fill=anybutton-fill,
-        text=any-text,
-        font=\normalsize,
-        inner sep=0.075cm,
-        rounded corners
-    },
     anyconfig/.style={
-        draw=any-draw,
+        draw=anyconfig-draw,
         thin,
         solid,
         fill=anyconfig-fill,
@@ -209,6 +251,16 @@
         inner sep=0.1cm,
         rounded corners,
         align=left
+    },
+    anybutton/.style={
+        draw=anybutton-draw,
+        thin,
+        solid,
+        fill=anybutton-fill,
+        text=anybutton-text,
+        font=\normalsize,
+        inner sep=0.075cm,
+        rounded corners % default: 4pt
     }
 }
 
@@ -223,20 +275,17 @@
         densely dashed,
         line cap=round
     },
+    advancedconfig/.style={
+        anyconfig,
+        draw=advancedconfig-draw,
+        fill=advancedconfig-fill,
+        text=advanced-text
+    },
     advancedbutton/.style={
         anybutton,
         draw=none,
         fill=advancedbutton-fill,
-        text=advanced-text
-    },
-    advancedconfig/.style={
-        anyconfig,
-        draw=advanced-draw,
-        fill=advancedconfig-fill,
-        text=advanced-text
-    },
-    advancedtable/.style={
-        advancedconfig
+        text=advancedbutton-text
     },
     advancedUI/.style={
         advancedconfig,
@@ -246,13 +295,34 @@
     }
 }
 
+% for Advanced UI - config menus
+\tikzset{
+    advancedconfigmenu/.style={
+        advancedconfig,
+        draw=advancedconfigmenu-draw,
+        fill=advancedconfigmenu-fill,
+        text=advancedconfigmenu-text
+    }
+}
+
+% for Advanced UI - Simple UI config menu
+\tikzset{
+    simpleUIconfigmenu/.style={
+        advancedconfigmenu,
+        draw=simpleUIconfigmenu-draw
+    }
+}
+
 % simple = for Simple UI only
 \tikzset{
     simpleline/.style={
-        anyline
+        anyline,
+        draw=simple-draw
     },
     simpleline momentary/.style={
-        anyline momentary
+        simpleline,
+        densely dashed,
+        line cap=round
     },
     simplebutton/.style={
         anybutton,
@@ -266,10 +336,25 @@
     }
 }
 
+% for UI switch lines
+\tikzset{
+    advancedUI switch line/.style={
+        simpleline,
+        draw=advancedUIswitchline-draw,
+        very thick
+    },
+    simpleUI switch line/.style={
+        advancedline,
+        draw=simpleUIswitchline-draw,
+        very thick
+    }
+}
+
 % for Extended Simple UI
 \tikzset{
     extendedsimpleUI/.style={
         anyconfig,
+        draw=extendedsimpleUI-draw,
         fill=extendedsimpleUI-fill
     }
 }
@@ -286,10 +371,33 @@
         inner ysep=0.065cm,
         rounded rectangle
     },
+    on-extra ramp label/.style={
+        on-extra,
+        draw=onofframplabel-draw,
+        fill=onofframplabel-fill,
+        text=onofframplabel-text
+    },
+    on-extra toggle ramp style/.style={
+        on-extra,
+        draw=onofftogglerampstyle-draw,
+        fill=onofftogglerampstyle-fill,
+        text=onofftogglerampstyle-text
+    },
     onoff/.style={
         on-extra,
         font=\bfseries\Huge,
         on grid
+    }
+}
+
+% for Lockout to Off right arrows
+\tikzset{
+    lockoutoffright-arrow/.style={
+        draw=none,
+        fill=none,
+        inner sep=0cm,
+        minimum width=0.28cm,
+        minimum height=0.05cm
     }
 }
 
@@ -315,30 +423,35 @@
         draw=advancedconfigmode-draw,
         very thick
     },
-    advancedfit/.style={
+    advancedborder-mode/.style={
         advancedconfig,
-        draw=advancedfit-draw,
-        fill=none,
-        inner sep=\borderspace
-    },
-    advancedborder/.style={
-        advancedfit,
-        inner sep=0cm
+        draw=advancedbordermode-draw,
+        fill=none
     }
 }
 
 % for basic use
 \tikzset{
     anyline basic use/.style={
-        anyline
+        anyline,
+        draw=basicuse-draw,
+        line width=1pt
     },
     anybutton basic use/.style={
         anybutton,
-        draw=basicuse-draw,
-        ultra thick, % ultra thick = 1.6pt
+        draw=anybuttonbasicuse-draw,
+        line width=2pt,
         fill=anybuttonbasicuse-fill,
         text=basicuse-text,
         font=\bfseries
+    },
+    button presses basic use fit/.style={
+        advancedborder-mode,
+        draw=buttonpressesbasicuse-draw,
+        line width=1pt,
+        inner xsep=0.03cm,
+        inner ysep=0.05cm,
+        rounded corners=2pt
     }
 }
 
@@ -366,7 +479,7 @@
         outer sep=0cm,
         minimum width=1.32cm+7.2pt,
         minimum height=5.4cm+7.2pt,
-        rounded corners=0.25pt % default: 4pt
+        rounded corners=0.25pt
     },
     rampcombined inside 1/.style={
         rampcombined,
@@ -407,7 +520,16 @@
     }
 }
 
-% for further information
+% for line from Factory Reset to Simple UI
+\tikzset{
+    anyline factoryreset simpleUI/.style={
+        anyline,
+        draw=factoryresetsimpleUI-draw,
+        rounded corners
+    }
+}
+
+% for general information
 \tikzset{
     generalinfo/.style={
         anyconfig,
@@ -418,16 +540,24 @@
         generalinfo,
         draw=andurilinfo-draw,
         very thick,
+        fill=andurilinfo-fill,
         text=andurilinfo-text
     },
     voltagecolorinfo/.style={
-        generalinfo
+        generalinfo,
+        fill=voltagecolorinfo-fill
     },
     buttonpressesinfo/.style={
-        generalinfo
+        generalinfo,
+        fill=buttonpressesinfo-fill
+    },
+    defaultsvaryinfo/.style={
+        generalinfo,
+        fill=defaultsvaryinfo-fill
     },
     matrixlegendinfo/.style={
         generalinfo,
+        fill=matrixlegendinfo-fill,
         matrix of nodes,
         nodes in empty cells,
         nodes={
@@ -451,17 +581,34 @@
         anyline basic use,
         line cap=round
     },
+    anybutton basic use legend/.style={
+        anybutton basic use,
+        fill=matrixlegendinfo-fill
+    },
     anyline legend/.style={
         anyline,
         line cap=round
+    },
+    anybutton legend/.style={
+        anybutton,
+        fill=matrixlegendinfo-fill
     },
     simpleline legend/.style={
         simpleline,
         line cap=round
     },
+    simplebutton legend/.style={
+        simplebutton,
+        fill=matrixlegendinfo-fill,
+        double=matrixlegendinfo-fill
+    },
     advancedline legend/.style={
         advancedline,
         line cap=round
+    },
+    advancedbutton legend/.style={
+        advancedbutton,
+        fill=matrixlegendinfo-fill
     },
     anyline momentary legend/.style={
         anyline momentary,
@@ -497,105 +644,130 @@
 % ----------------------------------------------------------------------
 \usepackage{tcolorbox} % for colored and framed text boxes
 
-% for the left part of voltage: red
-\newtcbox{\voltageboxred}{
+\tcbuselibrary{skins} % for additional styles (skins)
+
+% for setting options for every following tcolorbox
+\tcbset{
     colframe=voltagebox-frame, % initially black!75!white
     opacityframe=0, % initially 1.0
     boxrule=0cm, % initially 0.05cm
-    colback=red!25!voltagebox-mixfill, % initially black!5!white
+    colback=anyconfig-fill, % initially black!5!white
     coltext=voltagebox-text, % initially black
-    left=0.02cm, % initially 0.4cm
+    left=0cm, % initially 0.4cm
     right=0cm, % initially 0.4cm
-    top=0cm, % initially 0.2cm
-    bottom=0cm, % initially 0.2cm
+    top=0.005cm, % initially 0.2cm
+    bottom=0.005cm, % initially 0.2cm
     boxsep=0cm, % initially 0.1cm
     arc=0.05cm, % initially 0.1cm
-    sharp corners=east, % initially all rounded corners
+    sharp corners, % initially all rounded corners
     box align=base, % initially bottom
     nobeforeafter % for inside a tblr environment
 }
 
+% for the left part of voltage: red
+\newtcbox{\voltageboxred}{
+    colback=voltageboxcolor-red,
+    left=0.02cm,
+    rounded corners=west
+}
+
 % for the middle part of voltage: yellow, green, cyan, blue
 \newtcbox{\voltagebox}[1][white]{
-    colframe=voltagebox-frame,
-    opacityframe=0,
-    boxrule=0cm,
-    colback=#1!25!voltagebox-mixfill,
-    coltext=voltagebox-text,
-    left=0cm,
-    right=0cm,
-    top=0cm,
-    bottom=0cm,
-    boxsep=0cm,
-    sharp corners,
-    box align=base,
-    nobeforeafter
+    colback=#1
 }
 
 % for the right part of voltage: purple
 \newtcbox{\voltageboxpurple}{
-    colframe=voltagebox-frame,
-    opacityframe=0,
-    boxrule=0cm,
-    colback=purple!25!voltagebox-mixfill,
-    coltext=voltagebox-text,
-    left=0cm,
+    colback=voltageboxcolor-purple,
     right=0.02cm,
-    top=0cm,
-    bottom=0cm,
-    boxsep=0cm,
-    arc=0.05cm,
-    sharp corners=west,
-    box align=base,
-    nobeforeafter
+    rounded corners=east
+}
+
+% for the left part of voltage: red
+% adv = Advanced UI function
+\newtcbox{\voltageboxredadv}{
+    colback=voltageboxcolor-red,
+    coltext=voltageboxadv-text,
+    left=0.02cm,
+    rounded corners=west
+}
+
+% for the middle part of voltage: yellow, green, cyan, blue
+% adv = Advanced UI function
+\newtcbox{\voltageboxadv}[1][white]{
+    colback=#1,
+    coltext=voltageboxadv-text
+}
+
+% for the right part of voltage: purple
+% adv = Advanced UI function
+\newtcbox{\voltageboxpurpleadv}{
+    colback=voltageboxcolor-purple,
+    coltext=voltageboxadv-text,
+    right=0.02cm,
+    rounded corners=east
 }
 
 % for aux LED color for voltage
 \newcommand{\textboxauxledcfv}{%
     \voltageboxred{R-2.9,%
         \vphantom{Voltage,Ú}}%
-    \voltagebox[yellow]{\hspace{0.013cm}Y-3.3,%
+    \voltagebox[voltageboxcolor-yellow]{\hspace{0.013cm}Y-3.3,%
         \vphantom{Voltage,Ú}}%
-    \voltagebox[green]{\hspace{0.013cm}G-3.5,%
+    \voltagebox[voltageboxcolor-green]{\hspace{0.013cm}G-3.5,%
         \vphantom{Voltage,Ú}}%
-    \voltagebox[cyan]{\hspace{0.013cm}C-3.7,%
+    \voltagebox[voltageboxcolor-cyan]{\hspace{0.013cm}C-3.7,%
         \vphantom{Voltage,Ú}}%
-    \voltagebox[blue]{\hspace{0.013cm}B-3.9,%
+    \voltagebox[voltageboxcolor-blue]{\hspace{0.013cm}B-3.9,%
         \vphantom{Voltage,Ú}}%
     \voltageboxpurple{\hspace{0.013cm}P-4.1V%
         \vphantom{Voltage,Ú}}%
 }
 
-% for voltage display in off and lockout modes
+% for voltage display in off and lockout modes,
+% and for post-off voltage display
 \newcommand{\textboxvoltage}{%
-    \voltageboxred{V%
+    \voltageboxredadv{V%
         \vphantom{Voltage}}%
-    \voltagebox[yellow]{o%
+    \voltageboxadv[voltageboxcolor-yellow]{o%
         \vphantom{Voltage}}%
-    \voltagebox[green]{lt%
+    \voltageboxadv[voltageboxcolor-green]{lt%
         \vphantom{Voltage}}%
-    \voltagebox[cyan]{a%
+    \voltageboxadv[voltageboxcolor-cyan]{a%
         \vphantom{Voltage}}%
-    \voltagebox[blue]{g%
+    \voltageboxadv[voltageboxcolor-blue]{g%
         \vphantom{Voltage}}%
-    \voltageboxpurple{e%
+    \voltageboxpurpleadv{e%
         \vphantom{Voltage}}%
 }
 
-% for post-off voltage display
-\newcommand{\textboxpovd}{%
-    \voltageboxred{Post%
-        \vphantom{Post-Off Voltage Display}}%
-    \voltagebox[yellow]{-Off%
-        \vphantom{Post-Off Voltage Display}}%
-    \voltagebox[green]{\nobreakspace Vol%
-        \vphantom{Post-Off Voltage Display}}%
-    \voltagebox[cyan]{tage%
-        \vphantom{Post-Off Voltage Display}}%
-    \voltagebox[blue]{\nobreakspace Dis%
-        \vphantom{Post-Off Voltage Display}}%
-    \voltageboxpurple{play%
-        \vphantom{Post-Off Voltage Display}}%
+% for tint ramp
+\newtcbox{\tintrampbox}{
+    colframe=tintrampbox-frame,
+    skin=enhanced, % for interior style
+    interior style={
+        left color=tintrampboxcolor-left,
+        right color=tintrampboxcolor-right
+    },
+    coltext=tintrampbox-text,
+    left=0.02cm,
+    right=0.02cm,
+    rounded corners
+}
+
+% for tint ramp
+% adv = Advanced UI function
+\newtcbox{\tintrampboxadv}{
+    colframe=tintrampbox-frame,
+    skin=enhanced, % for interior style
+    interior style={
+        left color=tintrampboxcolor-left,
+        right color=tintrampboxcolor-right
+    },
+    coltext=tintrampboxadv-text,
+    left=0.02cm,
+    right=0.02cm,
+    rounded corners
 }
 
 % Preamble - 06 Misc ---------------------------------------------------
@@ -607,8 +779,18 @@
 % for infotext for Advanced UI only
 \newcommand{\infotextadvanced}[1]{\textcolor{infoadvanced-text}{#1}}
 
+% for infotext for Advanced UI - config menus
+\newcommand{\infotextadvancedconfigmenu}[1]{\textcolor
+    {infoadvancedconfigmenu-text}{#1}}
+
 % for infotext for Simple UI only
 \newcommand{\infotextsimple}[1]{\textcolor{infosimple-text}{#1}}
+
+% for text for basic use
+\newcommand{\textbasicuse}[1]{\textcolor{basicuse-text}{#1}}
+
+% for text for inherited
+\newcommand{\textinherited}[1]{\textcolor{inherited-text}{#1}}
 
 % for inherited by Simple UI
 % (Unicode character Asterisk)
@@ -617,6 +799,10 @@
 % for the next aux LED setting
 % (Unicode character Rightwards Arrow)
 \newcommand{\nextaux}{\char"2192}
+
+% for the next aux LED setting again
+% (Unicode character North East Arrow)
+\newcommand{\nextauxagain}{\char"2197}
 
 % Body - Table of Contents ---------------------------------------------
 % ----------------------------------------------------------------------
@@ -627,8 +813,8 @@
 % 04 ON ----------------------------------------------------------------
 % 05 OFF right ---------------------------------------------------------
 % 06 Momentary Mode from OFF ON ----------------------------------------
-% 07 Strobe / Mood Modes from OFF --------------------------------------
-% 08 Blinky / Utility Modes from OFF -----------------------------------
+% 07 Strobe & Mood Modes from OFF --------------------------------------
+% 08 Blinky & Utility Modes from OFF -----------------------------------
 % 09 Next Channel Mode from ON -----------------------------------------
 % 10 Ramp Config from ON -----------------------------------------------
 % 11 Simple UI Config from OFF -----------------------------------------
@@ -649,6 +835,7 @@
     font=\footnotesize
 ]
 
+% Smooth Ramp
 \node (Ramp Smooth)
 at (current page.center)[
     rampsmooth,
@@ -658,7 +845,9 @@ at (current page.center)[
 ]
 {};
 
+% Stepped Ramp (number of steps: 7)
 \node (Ramp Stepped 1-2)[
+    alias=stepped-step,
     rampstepped,
     right=0cm of Ramp Smooth.south east,
     anchor=south west,
@@ -667,51 +856,22 @@ at (current page.center)[
 ]
 {};
 
-\node (Ramp Stepped 2-3)[
+\foreach \x/\y/\z[
+    evaluate=\y as \ytop using \y*6,
+    evaluate=\z as \zbottom using \z*6
+]
+in {2-3/15/14, 3-4/14/13, 4-5/13/12, 5-6/12/11, 6-7/11/10}
+\node (Ramp Stepped \x)[
+    alias=stepped-step,
     rampstepped,
-    above=0cm of Ramp Stepped 1-2.north,
+    above=0cm of stepped-step,
     anchor=south,
-    top color=rampstepped-topbottom!90,
-    bottom color=rampstepped-topbottom!84
+    top color=rampstepped-topbottom!\ytop,
+    bottom color=rampstepped-topbottom!\zbottom
 ]
 {};
 
-\node (Ramp Stepped 3-4)[
-    rampstepped,
-    above=0cm of Ramp Stepped 2-3.north,
-    anchor=south,
-    top color=rampstepped-topbottom!84,
-    bottom color=rampstepped-topbottom!78
-]
-{};
-
-\node (Ramp Stepped 4-5)[
-    rampstepped,
-    above=0cm of Ramp Stepped 3-4.north,
-    anchor=south,
-    top color=rampstepped-topbottom!78,
-    bottom color=rampstepped-topbottom!72
-]
-{};
-
-\node (Ramp Stepped 5-6)[
-    rampstepped,
-    above=0cm of Ramp Stepped 4-5.north,
-    anchor=south,
-    top color=rampstepped-topbottom!72,
-    bottom color=rampstepped-topbottom!66
-]
-{};
-
-\node (Ramp Stepped 6-7)[
-    rampstepped,
-    above=0cm of Ramp Stepped 5-6.north,
-    anchor=south,
-    top color=rampstepped-topbottom!66,
-    bottom color=rampstepped-topbottom!60
-]
-{};
-
+% Further ramp elements
 \node (Ramp inside 1)
 at (current page.center)[
     rampcombined inside 1
@@ -779,16 +939,16 @@ at (Ramp.south)[
 ]
 {};
 
-\draw (ON Ramp.north) edge[
-    arrows={<[open, fill=fillarrow]->},
+\path (ON Ramp.north) edge[
+    arrows={<[open, fill=fillarrowbasicuse]->},
     anyline basic use,
-    shorten >=0.05cm,
-    shorten <=0.15cm
+    shorten <=0.15cm, % out
+    shorten >=0.05cm % in
 ]
 node[
     anybutton basic use,
     pos=0.53,
-    label={ [align=left, xshift=0.53cm] right:
+    label={ [align=left, xshift=0.515cm] right:
         \infotextany{Ramp up}\\
         \infotextany{(floor\textendash{}ceiling),}\\
         \infotextany{with reversal}\\
@@ -799,17 +959,17 @@ node[
 ]
 {1H} (Ramp text Ceiling.south);
 
-\draw (Ramp text Memory.south) edge[
+\path (Ramp text Memory.south) edge[
     arrows={->},
     anyline ramp,
-    shorten >=0.05cm,
-    shorten <=0.05cm
+    shorten <=0.05cm, % out
+    shorten >=0.05cm % in
 ]
 node[
     anybutton,
     pos=0.44,
-    label={ [align=left, xshift=0.53cm+0.8pt] right:
-    % +0.8pt for vertical alignment
+    label={ [align=left, xshift=0.515cm+1.3pt] right:
+    % +1.3pt for vertical alignment
         \infotextany{Ramp down}\\
         \infotextany{(ceiling\textendash{}floor)}
     }
@@ -835,9 +995,7 @@ at (Turbo.north)[
 
 \node (Ramp label)
 at (Turbo.north)[
-    on-extra,
-    draw=any-draw,
-    text=any-text,
+    on-extra ramp label,
     inner xsep=0.35cm,
     above,
     yshift=0.2cm
@@ -869,15 +1027,13 @@ at (Turbo.north)[
 {\oneline{Toggle Ramp Style\inherited{}}};
 
 \node (Toggle Ramp Style extra node ON)[
-    on-extra,
-    draw=advanced-draw,
-    text=advanced-text,
+    on-extra toggle ramp style,
     below right=0.9cm and 0.2cm of Toggle Ramp Style from ON.west,
     anchor=center
 ]
 {ON};
 
-\draw (Toggle Ramp Style extra node ON.east) edge[
+\path (Toggle Ramp Style extra node ON.east) edge[
     ->,
     advancedline,
     out=0,
@@ -895,7 +1051,7 @@ node[
 ]
 {6C}(Toggle Ramp Style from ON.south);
 
-\draw (Toggle Ramp Style from ON.north) edge[
+\path (Toggle Ramp Style from ON.north) edge[
     ->,
     advancedline,
     out=90,
@@ -905,7 +1061,7 @@ node[
 ]
 (Ramp Styles fit.335);
 
-\draw (Toggle Ramp Style from ON.north) edge[
+\path (Toggle Ramp Style from ON.north) edge[
     ->,
     advancedline,
     out=90,
@@ -925,10 +1081,10 @@ node[
     {OFF};
 }
 
-\draw (OFF.north) edge[
+\path (OFF.north) edge[
     ->,
     advancedline momentary,
-    shorten >=0.2pt,
+    shorten >=0.2pt, % in
     out=90,
     in=180,
     looseness=1.4
@@ -940,10 +1096,10 @@ node[
 {2H} (Turbo.north west);
 
 { [on above layer]
-    \draw (OFF.north) edge[
+    \path (OFF.north) edge[
         ->,
         anyline,
-        shorten >=0.2pt,
+        shorten >=0.2pt, % in
         out=90,
         in=180,
         looseness=1.3
@@ -956,14 +1112,15 @@ node[
     (Ramp.north west);
 }
 
-\draw (OFF.north east) edge[
+\path (OFF.21) edge[
     -, % no extra arrow tip
     simpleline momentary,
-    shorten >=2.5pt,
+    shorten <=-0.1pt, % out
+    shorten >=2pt, % in
     out=90,
     in=180,
     out looseness=1.3,
-    in looseness=0.65
+    in looseness=0.67
 ]
 node[
     simplebutton,
@@ -972,13 +1129,13 @@ node[
 {2H} (Ramp.north west);
 
 % Advanced UI: Anduril 2 turbo style
-\draw (Ramp.north) edge[
+\path (Ramp.north) edge[
     {Round Cap[sep=0.7cm]}-{Round Cap[sep=2.3cm]},
     advancedline,
     advancedbutton-fill,
     line width=2.4pt,
-    shorten >=0.2pt,
-    shorten <=0.7pt,
+    shorten <=0.7pt, % out
+    shorten >=0.2pt, % in
     out=40,
     in=0,
     out looseness=0.3,
@@ -986,11 +1143,11 @@ node[
 ]
 node
 {} (Turbo.north east);
-\draw (Ramp.north) edge[
+\path (Ramp.north) edge[
     <->,
     advancedline,
-    shorten >=0.2pt,
-    shorten <=0.7pt,
+    shorten <=0.7pt, % out
+    shorten >=0.2pt, % in
     out=40,
     in=0,
     out looseness=0.3,
@@ -1001,29 +1158,66 @@ node[
     pos=0.6,
     label={ [align=left] right:
         \infotextadvanced{If ramped up}\\
-        \infotextadvanced{to ceiling first}
+        \infotextadvanced{to ceiling first}\\
+        \infotextadvanced{(Andúril 2 style)}
     }
 ]
 {2C} (Turbo.north east);
 
-\draw (Ramp.west) edge[
+\path (Ramp.west) edge[
     {<[scale width=0.75]->[scale width=0.75]},
     anyline,
-    shorten >=0.5pt,
-    shorten <=0.5pt,
-    bend left=37
+    shorten <=0.8pt, % out
+    shorten >=0.5pt, % in
+    out=25,
+    in=144,
+    relative,
+    looseness=1.16
 ]
 node[
     anybutton,
-    pos=0.5
+    pos=0.57
 ]
 {2C} (Ramp.north west);
 
+% Momentary Turbo 3H from ON, ramp image
 { [on above layer]
-    \draw (OFF.south) edge[
+    \draw (Ramp.west) edge[
+        {Round Cap[sep=3.35cm]}-{Round Cap[sep=1.3cm]},
+        advancedline,
+        advancedbutton-fill,
+        line width=2.4pt,
+        shorten <=1.75pt, % out
+        shorten >=0.5pt, % in
+        out=54,
+        in=140,
+        relative,
+        looseness=1.3
+    ]
+    node
+    {} (Turbo.north west);
+    \draw (Ramp.west) edge[
+        {->[scale width=0.75]},
+        advancedline momentary,
+        shorten <=1.75pt, % out
+        shorten >=0.5pt, % in
+        out=54,
+        in=140,
+        relative,
+        looseness=1.3
+    ]
+    node[
+        advancedbutton,
+        pos=0.85
+    ]
+    {3H} (Turbo.north west);
+}
+
+{ [on above layer]
+    \path (OFF.south) edge[
         ->,
         anyline,
-        shorten >=0.2pt,
+        shorten >=0.2pt, % in
         out=270,
         in=180,
         looseness=1.3
@@ -1035,10 +1229,10 @@ node[
     {1H} (Ramp.south west);
 }
 
-\draw (OFF.east) edge[
+\path (OFF.east) edge[
     <->,
     anyline basic use,
-    shorten >=0.2pt
+    shorten >=0.2pt % in
 ]
 node[
     anybutton basic use,
@@ -1057,10 +1251,10 @@ node[
 }
 
 { [on above layer]
-    \draw (Lockout.north) edge[
+    \path (Lockout.north) edge[
         ->,
         anyline,
-        shorten >=0.2pt,
+        shorten >=0.2pt, % in
         out=90,
         in=0,
         looseness=1.3
@@ -1072,10 +1266,10 @@ node[
     {5C} (Ramp.north east);
 }
 
-\draw (Lockout.south) edge[
+\path (Lockout.south) edge[
     ->,
     anyline,
-    shorten >=0.2pt,
+    shorten >=0.2pt, % in
     out=270,
     in=0,
     looseness=1.3
@@ -1086,10 +1280,10 @@ node[
 ]
 {4H} (Ramp.south east);
 
-\draw (Lockout.west) edge[
+\path (Lockout.west) edge[
     <->,
     anyline,
-    shorten >=0.2pt
+    shorten >=0.2pt % in
 ]
 node[
     anybutton,
@@ -1107,7 +1301,7 @@ node[
     {ON};
 }
 
-\draw (ON.east) edge[
+\path (ON.east) edge[
     <->,
     anyline
 ]
@@ -1127,7 +1321,7 @@ node[
     {OFF};
 }
 
-\draw (Lockout.east) edge[
+\path (Lockout.east) edge[
     <->,
     anyline
 ]
@@ -1143,18 +1337,13 @@ node (OFF right to Lockout)[
 {4C} (OFF right.west);
 
 \node (Lockout to OFF right arrow)[
-    rectangle,
+    lockoutoffright-arrow,
     above=0.1cm of Lockout to OFF right.north,
-    anchor=south,
-    draw=none,
-    fill=none,
-    inner sep=0cm,
-    minimum width=0.28cm,
-    minimum height=0.05cm
+    anchor=south
 ]
 {};
 
-\draw (Lockout to OFF right arrow.south west) edge[
+\path (Lockout to OFF right arrow.south west) edge[
     ->,
     anyline,
     line cap=round
@@ -1164,18 +1353,13 @@ node[
 {} (Lockout to OFF right arrow.south east);
 
 \node (OFF right to Lockout arrow)[
-    rectangle,
+    lockoutoffright-arrow,
     above=0.1cm of OFF right to Lockout.north,
-    anchor=south,
-    draw=none,
-    fill=none,
-    inner sep=0cm,
-    minimum width=0.28cm,
-    minimum height=0.05cm
+    anchor=south
 ]
 {};
 
-\draw (OFF right to Lockout arrow.south east) edge[
+\path (OFF right to Lockout arrow.south east) edge[
     ->,
     anyline,
     line cap=round
@@ -1191,7 +1375,7 @@ node[
 ]
 {ON};
 
-\draw (OFF right extra node ON.east) edge[
+\path (OFF right extra node ON.east) edge[
     <->,
     anyline,
     out=0,
@@ -1216,7 +1400,7 @@ node[
     Exit: disconnect power
 };
 
-\draw (OFF.south) edge[
+\path (OFF.south) edge[
     ->,
     advancedline,
     out=270,
@@ -1229,7 +1413,7 @@ node[
 ]
 {5C} (Momentary Mode from OFF ON.east);
 
-\draw (ON.south) edge[
+\path (ON.south) edge[
     ->,
     advancedline,
     out=270,
@@ -1242,7 +1426,7 @@ node[
 ]
 {5C} (Momentary Mode from OFF ON.west);
 
-% 07 Strobe / Mood Modes from OFF --------------------------------------
+% 07 Strobe & Mood Modes from OFF --------------------------------------
 % ----------------------------------------------------------------------
 
 % Lightning Storm from Police Strobe
@@ -1263,7 +1447,7 @@ at (current page text area.south west)[
 ]
 {\oneline{Police Strobe}};
 
-\draw (Police Strobe from Tactical Strobe.north) edge[
+\path (Police Strobe from Tactical Strobe.north) edge[
     ->,
     advancedline-mode,
     out=90,
@@ -1284,7 +1468,7 @@ node[
 ]
 {\oneline{Tactical Strobe}};
 
-\draw (Tactical Strobe from Party Strobe.north) edge[
+\path (Tactical Strobe from Party Strobe.north) edge[
     ->,
     advancedline-mode,
     out=90,
@@ -1305,7 +1489,7 @@ node[
 ]
 {\oneline{Party Strobe}};
 
-\draw (Party Strobe from Bike Flasher.north) edge[
+\path (Party Strobe from Bike Flasher.north) edge[
     ->,
     advancedline-mode,
     out=90,
@@ -1327,7 +1511,7 @@ node[
 ]
 {\oneline{Candle}};
 
-\draw (Lightning Storm from Police Strobe.east) edge[
+\path (Lightning Storm from Police Strobe.east) edge[
     ->,
     advancedline-mode,
     out=0,
@@ -1351,10 +1535,10 @@ node[
     1 blink = 5 minutes
 };
 
-\draw (Candle from OFF.north west) edge[
+\path (Candle from OFF.north west) edge[
     ->,
     advancedline,
-    shorten <=-1.9pt,
+    shorten <=-1.99pt, % out
     out=135,
     in=0,
     looseness=0.7
@@ -1373,7 +1557,7 @@ node[
 ]
 {\oneline{Bike Flasher}};
 
-\draw (Candle from OFF.south) edge[
+\path (Candle from OFF.south) edge[
     ->,
     advancedline-mode,
     out=270,
@@ -1386,7 +1570,7 @@ node[
 ]
 {2C} (Bike Flasher from Candle.north);
 
-\draw (Bike Flasher from Candle.west) edge[
+\path (Bike Flasher from Candle.west) edge[
     ->,
     advancedline-mode,
     out=180,
@@ -1399,7 +1583,7 @@ node[
 ]
 {2C} (Party Strobe from Bike Flasher.east);
 
-% Strobe / Mood Modes Actions
+% Strobe & Mood Modes Actions
 \node (Strobe Modes Actions)
 at (current page text area.south)[
     advancedconfig,
@@ -1419,39 +1603,59 @@ at (current page text area.south)[
     4C = Previous strobe mode\vphantom{y}
 };
 
-% Strobe Modes fit
-{ [on background layer]
-    \node (Strobe Modes fit)[
-        advancedfit,
-        draw=none, % Strobe Modes fit replaced with border
-        xshift=0.2pt, % 1/2 line thickness for outer alignment
-        yshift=0.2pt, % 1/2 line thickness for outer alignment
-        fit=(Candle from OFF)
-        (Candle Timer)
-        (Bike Flasher from Candle)
-        (Party Strobe from Bike Flasher)
-        (Tactical Strobe from Party Strobe)
-        (Police Strobe from Tactical Strobe)
-        (Lightning Storm from Police Strobe)
-        (Strobe Modes Actions)
+% Strobe Modes border
+
+% +0.2pt: 0.5 line thickness for outer alignment
+\coordinate (Strobe Modes border 1) at
+    ($(Candle Timer.north east)
+    + (0cm, \borderspace + 0.2pt)$); % yshift=0.2pt
+\coordinate (Strobe Modes border 2) at
+    ($(Strobe Modes Actions.south east)
+    + (\borderspace + 0.2pt, -\borderspace + 0.2pt)$);
+    % xshift=0.2pt, yshift=0.2pt
+\coordinate (Strobe Modes border 3) at
+    ($(Lightning Storm from Police Strobe.north west)
+    + (-\borderspace + 0.2pt, 0cm)$); % xshift=0.2pt
+\coordinate (Strobe Modes border 4) at
+    ($(Candle Timer.north west)
+    + (0cm, \borderspace + 0.2pt)$); % yshift=0.2pt
+
+{ [on behind layer]
+    \path[
+        advancedborder-mode
     ]
-    {};
+    (Strobe Modes border 1)
+    -| (Strobe Modes border 2)
+    -| (Strobe Modes border 3)
+    |- (Strobe Modes border 4)
+    -- cycle;
 }
 
-\node (Strobe Modes fit title)[
-    below=0cm of Strobe Modes fit.north east,
+% +0.2pt: 0.5 line thickness for outer alignment
+\coordinate (Strobe Modes border north-east) at
+    ({$(Strobe Modes border 1) + (0cm, 0.2pt)$}
+    -| {$(Strobe Modes border 2) + (0.2pt, 0cm)$});
+
+\coordinate (Strobe Modes border mode-memory) at
+    ($(Strobe Modes border north-east) + (-0.327cm, 0cm)$);
+
+\coordinate (Strobe Modes border momentary-strobe) at
+    ($(Strobe Modes border north-east) + (-2.475cm, 0cm)$);
+
+\node (Strobe Modes border title)[
+    below=0cm of Strobe Modes border north-east,
     anchor=north east,
     inner xsep=0.15cm,
     inner ysep=0.1cm,
     align=right
 ]
 {
-    \normalsize\textbf{\infotextadvanced{Strobe / Mood Modes}}
+    \normalsize\textbf{\infotextadvanced{Strobe \& Mood Modes}}
     \spacingv
     \infotextadvanced{1C = Off}
 };
 
-\draw[
+\path[
     -,
     advancedline
 ]
@@ -1481,54 +1685,29 @@ node[
     advancedbutton,
     pos=0
 ]
-{3H} (Strobe Modes fit.47);
-
-\draw (Strobe Modes fit.77) edge[
-    ->,
-    advancedline,
-    out=80,
-    in=180,
-    looseness=0.9
-]
-node[
-    advancedbutton,
-    pos=0.2,
-    label={ [align=left] right:
-        \infotextadvanced{Momentary}\\
-        \infotextadvanced{Strobe Mode}
-   }
-]
-{5C}(Momentary Mode from OFF ON.191);
-
-% Strobe Modes border
-
-% +0.2pt: 1/2 line thickness for outer alignment
-\coordinate (Strobe Modes border 1) at
-    ($(Candle Timer.north east)
-    + (0cm, \borderspace + 0.2pt)$); % yshift=0.2pt
-\coordinate (Strobe Modes border 2) at
-    ($(Strobe Modes Actions.south east)
-    + (\borderspace + 0.2pt, -\borderspace + 0.2pt)$);
-    % xshift=0.2pt, yshift=0.2pt
-\coordinate (Strobe Modes border 3) at
-    ($(Lightning Storm from Police Strobe.north west)
-    + (-\borderspace + 0.2pt, 0cm)$); % xshift=0.2pt
-\coordinate (Strobe Modes border 4) at
-    ($(Candle Timer.north west)
-    + (0cm, \borderspace + 0.2pt)$); % yshift=0.2pt
+{3H} (Strobe Modes border mode-memory);
 
 { [on background layer]
-    \draw[
-        advancedborder
+    \path (Strobe Modes border momentary-strobe) edge[
+        ->,
+        advancedline,
+        shorten <=-0.1pt, % out
+        out=80,
+        in=180,
+        looseness=0.9
     ]
-    (Strobe Modes border 1)
-    -| (Strobe Modes border 2)
-    -| (Strobe Modes border 3)
-    |- (Strobe Modes border 4)
-    -- cycle;
+    node[
+        advancedbutton,
+        pos=0.2,
+        label={ [align=left] right:
+            \infotextadvanced{Momentary}\\
+            \infotextadvanced{Strobe Mode}
+        }
+    ]
+    {5C}(Momentary Mode from OFF ON.191);
 }
 
-% 08 Blinky / Utility Modes from OFF -----------------------------------
+% 08 Blinky & Utility Modes from OFF -----------------------------------
 % ----------------------------------------------------------------------
 
 % Next Channel Mode from Batt Check
@@ -1547,7 +1726,7 @@ at (current page text area.south)[
 % Batt Check from OFF
 \node (Batt Check from OFF)[
     anyconfig-mode,
-    above left=1.62 and 0.51cm of
+    above left=1.62cm and 0.51cm of
     Next Channel Mode from Batt Check.north west,
     anchor=south west
 ]
@@ -1569,10 +1748,10 @@ at (current page text area.south)[
     \infotextadvanced{Advanced UI: voltage displayed repeatedly}
 };
 
-\draw (Batt Check from OFF.213) edge[
+\path (Batt Check from OFF.213) edge[
     ->,
     advancedline,
-    shorten >=-1.8pt,
+    shorten >=-1.8pt, % in
     out=270,
     in=120,
     looseness=0.9
@@ -1584,7 +1763,7 @@ node[
 {3C} (Next Channel Mode from Batt Check.north west);
 
 { [on above layer]
-    \draw (OFF.south) edge[
+    \path (OFF.south) edge[
         {Round Cap[sep=3.3cm]}-{Round Cap[sep=3.1cm]},
         anyline,
         anybutton-fill,
@@ -1595,7 +1774,7 @@ node[
     ]
     node
     {} (Batt Check from OFF.north);
-    \draw (OFF.south) edge[
+    \path (OFF.south) edge[
         ->,
         anyline,
         out=270,
@@ -1612,7 +1791,7 @@ node[
 % Voltage Config from Batt Check
 { [on background layer]
     \node (Voltage Config from Batt Check)[
-        advancedtable,
+        advancedconfigmenu,
         right=1.5cm of Strobe Modes Actions.south east,
         anchor=south west
     ]
@@ -1625,7 +1804,7 @@ node[
                  1C = \char"2212{}0.30V\\
                  7C = 0V (default)\\
                  13C = +0.30V}\\
-            2 & {\textboxpovd{}\\
+            2 & {Post-Off \textboxvoltage{} Display\\
                  (on lights with RGB aux)}\\
               & {0C = Disable\\
                  nC = n seconds;\\
@@ -1645,7 +1824,7 @@ node[
     };
 }
 
-\draw (Batt Check from OFF.west) edge[
+\path (Batt Check from OFF.west) edge[
     ->,
     advancedline,
     out=180,
@@ -1656,7 +1835,7 @@ node[
     advancedbutton,
     pos=0.5
 ]
-{7H} (Voltage Config from Batt Check.326);
+{7H} (Voltage Config from Batt Check.324);
 
 % Temp Check from Batt Check
 \node (Temp Check from Batt Check)[
@@ -1666,7 +1845,7 @@ node[
 ]
 {\oneline{Temp Check}};
 
-\draw (Batt Check from OFF.east) edge[
+\path (Batt Check from OFF.east) edge[
     ->,
     advancedline-mode,
     out=0,
@@ -1680,24 +1859,26 @@ node[
 {2C} (Temp Check from Batt Check.west);
 
 % Temp Check Thermal Config
-\node (Temp Check Thermal Config)[
-    advancedtable,
-    above right=0.2cm and 1cm of
-    Temp Check from Batt Check.north east,
-    anchor=north west
-]
-{
-   \spacingnoextra
-   \begin{configtblr}{}
-        Thermal Config\inherited{} &\\
-        1 & Calibrate\\
-          & nC = n\,°C\\
-        2 & Limit\\
-          & nC = n + 30\,°C\\
-    \end{configtblr}
-};
+{ [on background layer]
+    \node (Temp Check Thermal Config)[
+        advancedconfigmenu,
+        above right=0.2cm and 1cm of
+        Temp Check from Batt Check.north east,
+        anchor=north west
+    ]
+    {
+    \spacingnoextra
+    \begin{configtblr}{}
+            Thermal Config\inherited{} &\\
+            1 & Calibrate\\
+              & nC = n\,°C\\
+            2 & Limit\\
+              & nC = n + 30\,°C\\
+        \end{configtblr}
+    };
+}
 
-\draw (Temp Check from Batt Check.east) edge[
+\path (Temp Check from Batt Check.east) edge[
     ->,
     advancedline,
     out=0,
@@ -1718,7 +1899,7 @@ node[
 ]
 {\oneline{Beacon}};
 
-\draw (Temp Check from Batt Check.south) edge[
+\path (Temp Check from Batt Check.south) edge[
     ->,
     advancedline-mode,
     out=270,
@@ -1742,7 +1923,7 @@ node[
     1 blink = 1 second pause
 };
 
-\draw (Beacon from Temp Check.east) edge[
+\path (Beacon from Temp Check.east) edge[
     ->,
     advancedline,
     out=0,
@@ -1763,7 +1944,7 @@ node[
 ]
 {\oneline{SOS}};
 
-\draw (Beacon from Temp Check.west) edge[
+\path (Beacon from Temp Check.west) edge[
     ->,
     advancedline-mode,
     out=180,
@@ -1776,7 +1957,7 @@ node[
 ]
 {2C} (SOS from Beacon.east);
 
-\draw (SOS from Beacon.north) edge[
+\path (SOS from Beacon.north) edge[
     ->,
     advancedline-mode,
     out=90,
@@ -1789,41 +1970,9 @@ node[
 ]
 {2C} (Batt Check from OFF.south);
 
-% Blinky Modes fit
-{ [on background layer]
-    \node (Blinky Modes fit)[
-        advancedfit,
-        draw=none, % Blinky Modes fit replaced with border
-        yshift=0.2pt, % 1/2 line thickness for outer alignment
-        fit=(Batt Check from OFF)
-        (Batt Check Simple Advanced)
-        % (Voltage Config from Batt Check)
-        (Next Channel Mode from Batt Check)
-        (Temp Check from Batt Check)
-        (Temp Check Thermal Config)
-        (Beacon from Temp Check)
-        (Beacon Speed)
-        (SOS from Beacon)
-    ]
-    {};
-}
-
-\node (Blinky Modes fit title)[
-    below=0cm of Blinky Modes fit.north east,
-    anchor=north east,
-    inner xsep=0.15cm,
-    inner ysep=0.1cm,
-    align=right
-]
-{
-    \normalsize\textbf{\infotextadvanced{Blinky / Utility Modes}}
-    \spacingv
-    \infotextadvanced{1C = Off}
-};
-
 % Blinky Modes border
 
-% +0.2pt: 1/2 line thickness for outer alignment
+% +0.2pt: 0.5 line thickness for outer alignment
 \coordinate (Blinky Modes border 1) at
     ($(Voltage Config from Batt Check.north east)
     + (1cm, \borderspace)$);
@@ -1840,9 +1989,9 @@ node[
     ($(Voltage Config from Batt Check.north west)
     + (-\borderspace, \borderspace)$);
 
-{ [on background layer]
-    \draw[
-        advancedborder
+{ [on behind layer]
+    \path[
+        advancedborder-mode
     ]
     (Blinky Modes border 1)
     -- (Blinky Modes border 2)
@@ -1852,18 +2001,39 @@ node[
     -- cycle;
 }
 
+% +/-0.2pt: 0.5 line thickness for outer alignment
+\coordinate (Blinky Modes border north-east) at
+    ({$(Blinky Modes border 2) + (0cm, 0.2pt)$}
+    -| {$(Blinky Modes border 3) + (0.2pt, 0cm)$});
+\coordinate (Blinky Modes border south-east) at
+    ({$(Blinky Modes border 4) + (0cm, -0.2pt)$}
+    -| {$(Blinky Modes border 3) + (0.2pt, 0cm)$});
+
+\node (Blinky Modes border title)[
+    below=0cm of Blinky Modes border north-east,
+    anchor=north east,
+    inner xsep=0.15cm,
+    inner ysep=0.1cm,
+    align=right
+]
+{
+    \normalsize\textbf{\infotextadvanced{Blinky \& Utility Modes}}
+    \spacingv
+    \infotextadvanced{1C = Off}
+};
+
 % 09 Next Channel Mode from ON -----------------------------------------
 % ----------------------------------------------------------------------
 \node (Next Channel Mode from ON)
 at (current page text area.west)[
     anyconfig,
-    anchor=west,
-    yshift=0.4cm
+    yshift=0.4cm,
+    anchor=west
 ]
 {\oneline{Next Channel Mode}};
 
 { [on above layer]
-    \draw (ON.west) edge[
+    \path (ON.west) edge[
         ->,
         anyline,
         out=180,
@@ -1878,18 +2048,20 @@ at (current page text area.west)[
 }
 
 % Tint Ramping from ON
-\node (Tint Ramping from ON)[
-    anyconfig,
-    below=\nodespacev of Next Channel Mode from ON.south west,
-    anchor=north west
-]
-{
-    \firstline{Tint Ramping}
-    If this channel mode can
-};
+{ [on background layer]
+    \node (Tint Ramping from ON)[
+        anyconfig,
+        below=\nodespacev of Next Channel Mode from ON.south west,
+        anchor=north west
+    ]
+    {
+        \firstline{\tintrampbox{Tint Ramp}}
+        If this channel mode can
+    };
+}
 
 { [on above layer]
-    \draw (ON.west) edge[
+    \path (ON.west) edge[
         ->,
         anyline,
         out=180,
@@ -1914,7 +2086,7 @@ at (current page text area.west)[
     If no tint ramping
 };
 
-\draw (ON.west) edge[
+\path (ON.west) edge[
     ->,
     advancedline momentary,
     out=180,
@@ -1938,7 +2110,7 @@ node[
     On multi-channel lights
 };
 
-\draw (ON.west) edge[
+\path (ON.west) edge[
     ->,
     advancedline momentary,
     out=180,
@@ -1962,7 +2134,7 @@ node[
     1 blink = 5 minutes
 };
 
-\draw (ON.north) edge[
+\path (ON.north) edge[
     ->,
     advancedline,
     out=90,
@@ -1977,33 +2149,33 @@ node[
 
 % 10 Ramp Config from ON -----------------------------------------------
 % ----------------------------------------------------------------------
-\node (Ramp Config from ON)
-at (current page text area.north west)[
-    advancedtable,
-    anchor=north west
-]
-{
-    \spacingnoextra
-    \begin{configtblr}{
-        row{2}     = {abovesep=3pt, belowsep=2pt},
-        row{6}     = {abovesep=3pt, belowsep=2pt},
-        cell{2}{1} = {c=2}{font=\bfseries},
-        cell{6}{1} = {c=2}{font=\bfseries}
-    }
-        Ramp Config &\\
-        Smooth Ramp &\\
-        1 & Floor: nC = n of 150\\
-        2 & Ceiling: nC = 151 \char"2212{} n\\
-        3 & {Speed\inherited{}: 1C (full speed)\\
-             to 4C (quarter speed)}\\
-        Stepped Ramp &\\
-        1 & Floor: nC = n of 150\\
-        2 & Ceiling: nC = 151 \char"2212{} n\\
-        3 & Step count: 1\textendash{}150C\\
-    \end{configtblr}
-};
+{ [on background layer]
+    \node (Ramp Config from ON)
+    at (current page text area.north west)[
+        advancedconfigmenu,
+        anchor=north west
+    ]
+    {
+        \spacingnoextra
+        \begin{configtblr}{
+            row{2,6}     = {abovesep=3pt, belowsep=2pt},
+            cell{2,6}{1} = {c=2}{font=\bfseries}
+        }
+            Ramp Config &\\
+            Smooth Ramp &\\
+            1 & Floor: nC = n of 150\\
+            2 & Ceiling: nC = 151 \char"2212{} n\\
+            3 & {Speed\inherited{}: 1C (full speed)\\
+                 to 4C (quarter speed)}\\
+            Stepped Ramp &\\
+            1 & Floor: nC = n of 150\\
+            2 & Ceiling: nC = 151 \char"2212{} n\\
+            3 & Step count: 1\textendash{}150C\\
+        \end{configtblr}
+    };
+}
 
-\draw[
+\path[
     ->,
     advancedline
 ]
@@ -2012,51 +2184,55 @@ at (current page text area.north west)[
     in=280,
     looseness=1.4
 ]
-+(-3.35cm, 3.25cm) to[
++(-3.33cm, 3.25cm) to[
     out=100,
     in=275,
     looseness=0.9
 ]
 node[
     advancedbutton,
-    pos=0.5
+    pos=0.67
 ]
 {7H}
-+(-3.45cm, 4.9cm) to[
++(-3.44cm, 4.9cm) to[
     out=95,
     in=320,
     looseness=0.9
-] (Ramp Config from ON.295);
+]
+(Ramp Config from ON.295);
 
 % Channel Mode Config from ON
-\node (Channel Mode Config from ON)[
-    advancedtable,
-    above=0.5cm of Next Channel Mode from ON.north west,
-    anchor=south west
-]
-{
-    \spacingnoextra
-    \begin{configtblr}{
-        row{4}     = {abovesep=3pt, belowsep=2pt},
-        cell{4}{1} = {c=2}{}
-    }
-        {Channel Mode\\
-         Config\inherited{}} &\\
-        n & n\textsuperscript{th} channel mode\\
-        & {0C = Disable\\
-           1C = Enable}\\
-        {Typical sequence for\\
-         dual-channel lights}\\
-        1  & Channel 1\\
-        2  & Channel 2\\
-        3  & 50/50\\
-        4  & Tint Ramp\\
-        5  & Auto-tint\\
-        6+ & Aux LED Channels\\
-    \end{configtblr}
-};
+{ [on background layer]
+    \node (Channel Mode Config from ON)[
+        advancedconfigmenu,
+        above=0.5cm of Next Channel Mode from ON.north west,
+        anchor=south west
+    ]
+    {
+        \spacingnoextra
+        \begin{configtblr}{
+            row{4}     = {abovesep=3pt, belowsep=2pt},
+            cell{4}{1} = {c=2}{}
+        }
+            {Channel Mode\\
+             Config\inherited{}} &\\
+            n & n\textsuperscript{th} channel mode\\
+            & {0C = Disable\\
+               1C = Enable}\\
+            {Typical sequence for\\
+             dual-channel lights}\\
+            1  & Channel 1\\
+            2  & Channel 2\\
+            3  & 50/50\\
+            4  & \tintrampboxadv{Tint Ramp}\\
+            5  & {Auto-tint\\
+                  (3H = Reverse)}\\
+            6+ & Aux LED Channels\\
+        \end{configtblr}
+    };
+}
 
-\draw (ON.north) edge[
+\path (ON.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2071,48 +2247,45 @@ node[
         \infotextadvanced{unless overridden}
    }
 ]
-{9H} (Channel Mode Config from ON.318);
+{9H} (Channel Mode Config from ON.316);
 
 % Ramp Extras Config from ON
-\node (Ramp Extras Config from ON)[
-    advancedtable,
-    right=\nodespaceh of Ramp Config from ON.north east,
-    anchor=north west
-]
-{
-    \spacingnoextra
-    \begin{configtblr}{
-        row{Y}       = {abovesep=3pt},
-        row{Z}       = {abovesep=2pt},
-        cell{Y,Z}{1} = {c=2}{}
-    }
-        Ramp Extras Config &\\
-        1 & Disable manual memory\inherited{}\\
-          & 1+C\\
-        2 & Manual memory timer\inherited{}\\
-          & {0C = Disable\\
-             nC = n minutes}\\
-        3 & Moon style (1H from Off)\inherited{}\\
-          & {0C = Ramp up after moon\\
-             1C = Stay at floor level}\\
-        4 & {Advanced UI's turbo style\\
-             (2C from On/Ramp)}\\
-          & {0C = Ceiling only, no turbo\\
-             1C = Turbo\\
-             2C = Ceiling, or turbo if\\
-             ramped up to ceiling first}\\
-        5 & Smooth Steps\inherited{}\\
-          & {0C = Disable\\
-             1C = Enable}\\
-        {Types of brightness memory\\
-         (1C from Off)} &\\
-        {Automatic: last-ramped\\
-         Manual: user's saved\\
-         Hybrid: manual after n minutes} &\\
-    \end{configtblr}
-};
+{ [on background layer]
+    \node (Ramp Extras Config from ON)[
+        advancedconfigmenu,
+        right=\nodespaceh of Ramp Config from ON.north east,
+        anchor=north west
+    ]
+    {
+        \spacingnoextra
+        \begin{configtblr}{}
+            Ramp Extras Config &\\
+            1 & Disable manual memory\inherited{}\\
+              & 1+C\\
+            2 & Manual memory timer\inherited{}\\
+              & {0C = Disable\\
+                 nC = n minutes}\\
+            3 & {Ramp-after-moon style\inherited{}\\
+                 (1H from Off)}\\
+              & {0C = Ramp up after moon\\
+                 1C = Stay at floor level}\\
+            4 & {Advanced UI's turbo style\\
+                 (2C from On/Ramp)}\\
+              & {0C = Ceiling only, no turbo\\
+                 \char"2192{} momentary ceiling only\\
+                 1C = Turbo\\
+                 (Andúril 1 style)\\
+                 2C = Ceiling, or turbo if\\
+                 ramped up to ceiling first\\
+                 (Andúril 2 style)}\\
+            5 & Smooth Steps\inherited{}\\
+              & {0C = Disable\\
+                 1C = Enable}\\
+        \end{configtblr}
+    };
+}
 
-\draw (ON.north) edge[
+\path (ON.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2138,84 +2311,100 @@ node[
     current channel mode\vphantom{y}
 };
 
-\draw (ON.north) edge[
+\path (ON.north) edge[
     ->,
     advancedline,
     out=90,
-    in=255,
+    in=260,
     looseness=1.5
 ]
 node[
     advancedbutton,
-    pos=0.85
+    pos=0.83
 ]
 {10C} (Manual Memory from ON.245);
 
-% 11 Simple UI Config from OFF -----------------------------------------
-% ----------------------------------------------------------------------
-\node (Simple UI Config from OFF)[
-    advancedtable,
-    draw=simpleUIconfig-draw,
-    right=\nodespaceh of Ramp Extras Config from ON.north east,
-    anchor=north west
+% Types of brightness memory information
+\node (Types of brightness memory information)[
+    advancedconfig,
+    above=0.2cm of Manual Memory from ON.north west,
+    anchor=south west
 ]
 {
-    \spacingnoextra
-    \begin{configtblr}{}
-        Simple UI Config &\\
-        1 & Floor: nC = n of 150\\
-        2 & Ceiling: nC = 151 \char"2212{} n\\
-        3 & Step count: 1\textendash{}150C\\
-        4 & {Simple UI's turbo style\\
-             (2C from On/Ramp)}\\
-          & {0C = Ceiling only, no turbo\\
-             1C = Turbo\\
-             2C = Ceiling, or turbo if\\
-             ramped up to ceiling first}\\
-    \end{configtblr}
+    Types of brightness\\
+    memory (1C from Off)
+    \spacingv
+    Automatic: last-ramped\\
+    Manual: user's saved\\
+    Hybrid: automatic first,\\
+    manual after n minutes\vphantom{y}
 };
 
-\draw (OFF.north) edge[
+% 11 Simple UI Config from OFF -----------------------------------------
+% ----------------------------------------------------------------------
+{ [on background layer]
+    \node (Simple UI Config from OFF)[
+        simpleUIconfigmenu,
+        right=\nodespaceh of Ramp Extras Config from ON.north east,
+        anchor=north west
+    ]
+    {
+        \spacingnoextra
+        \begin{configtblr}{}
+            Simple UI Config &\\
+            1 & Floor: nC = n of 150\\
+            2 & Ceiling: nC = 151 \char"2212{} n\\
+            3 & Step count: 1\textendash{}150C\\
+            4 & Simple UI's turbo style\\
+              & {0C/1C/2C\\
+                \char"2192{} see Ramp Extras, 4}\\
+        \end{configtblr}
+    };
+}
+
+\path (OFF.north) edge[
     ->,
     advancedline,
     out=90,
-    in=300,
+    in=307,
     out looseness=1.3,
     in looseness=0.7
 ]
 node[
     advancedbutton,
-    pos=0.78
+    pos=0.6
 ]
 {10H} (Simple UI Config from OFF.310);
 
 % Misc Config from OFF
-\node (Misc Config from OFF)[
-    advancedtable,
-    right=\nodespaceh of Simple UI Config from OFF.north east,
-    anchor=north west
-]
-{
-    \spacingnoextra
-    \begin{configtblr}{
-        row{2}     = {belowsep=2pt},
-        cell{2}{1} = {c=2}{}
-    }
-        Misc Config\inherited{} &\\
-        Hardware-specific &\\
-        1 & Tint Ramp style\\
-          & {0C = Smooth ramp\\
-             1C = Middle tint only\\
-             2C = Channel toggle\\
-             3+C = Stepped ramp\\
-             with 3+ steps}\\
-        2 & Jump Start level\\
-          & {1\textendash{}150C (usually\\
-             between 20 and 50)}\\
-    \end{configtblr}
-};
+{ [on background layer]
+    \node (Misc Config from OFF)[
+        advancedconfigmenu,
+        right=0.9cm of Simple UI Config from OFF.north east,
+        anchor=north west
+    ]
+    {
+        \spacingnoextra
+        \begin{configtblr}{
+            row{2}     = {belowsep=2pt},
+            cell{2}{1} = {c=2}{}
+        }
+            Misc Config\inherited{} &\\
+            Hardware-specific &\\
+            1 & \tintrampboxadv{Tint Ramp} style\\
+              & {0C = Smooth ramp\\
+                 1C = Middle tint only\\
+                 2C = Channel toggle\\
+                 3+C = Stepped ramp\\
+                 with 3+ steps}\\
+            2 & Jump Start level\\
+              & {1\textendash{}150C (usually\\
+                 between 20 and 50)}\\
+        \end{configtblr}
+    };
+}
 
-\draw (OFF.north) edge[
+\path (OFF.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2226,7 +2415,7 @@ node[
     advancedbutton,
     pos=0.84
 ]
-{9H} (Misc Config from OFF.287);
+{9H} (Misc Config from OFF.290);
 
 % 12 Momentary Moon from Lockout ---------------------------------------
 % ----------------------------------------------------------------------
@@ -2237,20 +2426,20 @@ node[
 ]
 {
     \firstline{Momentary Moon}
-    Lowest floor of\\
-    smooth vs stepped
+    Lowest floor (of smooth\\
+    vs stepped ramp)
 };
 
-\draw (Lockout.south) edge[
+\path (Lockout.south) edge[
     ->,
     anyline momentary,
     out=270,
     in=180,
-    looseness=1
+    looseness=1.1
 ]
 node[
     anybutton,
-    pos=0.7
+    pos=0.75
 ]
 {1H} (Momentary Moon from Lockout.west);
 
@@ -2262,12 +2451,11 @@ node[
 ]
 {
     \firstline{Momentary Low}
-    Highest floor of\\
-    smooth vs stepped, or\\
+    Highest floor, or\\
     manual memory if set
 };
 
-\draw (Lockout.south) edge[
+\path (Lockout.south) edge[
     ->,
     anyline momentary,
     out=270,
@@ -2276,7 +2464,7 @@ node[
 ]
 node[
     anybutton,
-    pos=0.72
+    pos=0.745
 ]
 {2H} (Momentary Low from Lockout.west);
 
@@ -2288,7 +2476,7 @@ node[
 ]
 {\oneline{Next Channel Mode}};
 
-\draw (Lockout.south) edge[
+\path (Lockout.south) edge[
     ->,
     anyline,
     out=270,
@@ -2297,7 +2485,7 @@ node[
 ]
 node[
     anybutton,
-    pos=0.74
+    pos=0.765
 ]
 {3H} (Next Channel Mode from Lockout.west);
 
@@ -2315,11 +2503,11 @@ node[
         Cyan \nextaux{}\\
         Blue \nextaux{} Purple \nextaux{} White \nextaux{}\\
         Disco \nextaux{} Rainbow \nextaux{}
-        \textboxvoltage{}
+        \textboxvoltage{} \nextauxagain{}
     };
 }
 
-\draw (OFF right.north) edge[
+\path (OFF right.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2341,9 +2529,10 @@ node[
 {
     \firstline{OFF Aux LED Pattern\inherited{}}
     Off \nextaux{} Low \nextaux{} High \nextaux{} Blinking
+    \nextauxagain{}
 };
 
-\draw (OFF right.north) edge[
+\path (OFF right.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2370,11 +2559,11 @@ node[
         Cyan \nextaux{}\\
         Blue \nextaux{} Purple \nextaux{} White \nextaux{}\\
         Disco \nextaux{} Rainbow \nextaux{}
-        \textboxvoltage{}
+        \textboxvoltage{} \nextauxagain{}
     };
 }
 
-\draw (Lockout.north) edge[
+\path (Lockout.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2396,9 +2585,10 @@ node[
 {
     \firstline{Lockout Aux LED Pattern\inherited{}}
     Off \nextaux{} Low \nextaux{} High \nextaux{} Blinking
+    \nextauxagain{}
 };
 
-\draw (Lockout.north) edge[
+\path (Lockout.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2423,7 +2613,7 @@ node[
     nC = n minutes
 };
 
-\draw (Lockout.north) edge[
+\path (Lockout.north) edge[
     ->,
     advancedline,
     out=90,
@@ -2440,26 +2630,28 @@ node[
 % ----------------------------------------------------------------------
 
 % Tactical Mode Config
-\node (Tactical Mode Config)[
-    advancedtable,
-    right=0.9cm of Blinky Modes fit.south east,
-    anchor=south west
-]
-{
-    \spacingnoextra
-    \begin{configtblr}{
-        column{1} = {0.45cm}
-    }
-        Tactical Mode Config &\\
-        1\textendash{}3 & Tactical Slots 1\textendash{}3\\
-                        & {1\textendash{}150C = Brightness\\
-                           0C = Last-used strobe /\\
-                           mood mode\\
-                           151C = Party strobe\\
-                           152C = Tactical strobe\\
-                           153+C = Other strobes}\\
-    \end{configtblr}
-};
+{ [on background layer]
+    \node (Tactical Mode Config)[
+        advancedconfigmenu,
+        right=0.9cm of Blinky Modes border south-east,
+        anchor=south west
+    ]
+    {
+        \spacingnoextra
+        \begin{configtblr}{
+            column{1} = {0.45cm}
+        }
+            Tactical Mode Config &\\
+            1\textendash{}3 & Tactical Slots 1\textendash{}3\\
+                            & {1\textendash{}150C = Brightness\\
+                               0C = Last-used strobe/\\
+                               mood mode\\
+                               151C = Party strobe\\
+                               152C = Tactical strobe\\
+                               153+C = Other strobes}\\
+        \end{configtblr}
+    };
+}
 
 % Tactical Mode from OFF right
 \node (Tactical Mode from OFF right)[
@@ -2474,7 +2666,7 @@ node[
     3H = Tactical Slot 3 (strobe)
 };
 
-\draw (Tactical Mode from OFF right.south) edge[
+\path (Tactical Mode from OFF right.south) edge[
     ->,
     advancedline,
     out=270,
@@ -2487,7 +2679,7 @@ node[
 ]
 {7H} (Tactical Mode Config.north);
 
-\draw (OFF right.south) edge[
+\path (OFF right.south) edge[
     -{<[sep=1.75cm]>},
     advancedline,
     out=270,
@@ -2518,6 +2710,7 @@ node[
 \node (Factory Reset from OFF right)
 at (current page text area.south east)[
     anyconfig,
+    xshift=-0.45cm,
     anchor=south east
 ]
 {
@@ -2531,17 +2724,17 @@ at (current page text area.south east)[
     after each factory reset.
 };
 
-\draw (OFF right.south) edge[
+\path (OFF right.south) edge[
     ->,
     anyline,
     out=270,
     in=170,
-    out looseness=0.6,
+    out looseness=0.4,
     in looseness=0.4
 ]
 node[
     anybutton,
-    pos=0.73,
+    pos=0.74,
     label={ [align=left] right:
         \infotextany{Keep holding}\\
         \infotextany{for about 4s}
@@ -2564,7 +2757,7 @@ node[
     may be omitted.
 };
 
-\draw (OFF right.south) edge[
+\path (OFF right.south) edge[
     ->,
     anyline,
     out=270,
@@ -2583,22 +2776,24 @@ node[
 \node (Advanced UI switch from OFF right)
 at (current page text area.east)[
     advancedUI,
-    anchor=north east,
-    yshift=-2.4cm
+    xshift=-0.45cm,
+    yshift=-2.4cm,
+    anchor=north east
 ]
 {Advanced UI};
 
 { [on above layer]
-    \draw (OFF right.east) edge[
+    \path (OFF right.east) edge[
         ->,
-        simpleline,
+        advancedUI switch line,
+        shorten <=-0.4pt, % out
         out=0,
         in=90,
-        looseness=1.4
+        looseness=1.2
     ]
     node[
         simplebutton,
-        pos=0.68
+        pos=0.63
     ]
     {10H} (Advanced UI switch from OFF right.north);
 }
@@ -2607,23 +2802,44 @@ at (current page text area.east)[
 \node (Simple UI switch from OFF right)
 at (current page text area.east)[
     simpleUI,
-    anchor=south east,
-    yshift=2.4cm
+    xshift=-0.45cm,
+    yshift=2.4cm,
+    anchor=south east
 ]
 {Simple UI};
 
-\draw (OFF right.east) edge[
+\path (OFF right.east) edge[
     ->,
-    advancedline,
+    simpleUI switch line,
+    shorten <=-0.4pt, % out
     out=0,
     in=270,
-    looseness=1.4
+    looseness=1.2
 ]
 node[
     advancedbutton,
-    pos=0.7
+    pos=0.65
 ]
 {10C} (Simple UI switch from OFF right.south);
+
+% Line from Factory Reset to Simple UI
+
+% -0.2pt: 0.5 line thickness for vertical alignment
+\coordinate (Factory Reset right) at
+    ($(Factory Reset from OFF right.east) + (0.45cm-0.2pt, 0cm)$);
+\coordinate (Simple UI switch right) at
+    ($(Simple UI switch from OFF right.east) + (0.45cm-0.2pt, 0cm)$);
+
+{ [on background layer]
+    \path[
+        ->,
+        anyline factoryreset simpleUI
+    ]
+    (Factory Reset from OFF right.east)
+    -- (Factory Reset right)
+    -- (Simple UI switch right)
+    -- (Simple UI switch from OFF right.east);
+}
 
 % Simple UI switch extra node Extended Simple UI
 \node (Simple UI switch extra node Extended Simple UI)[
@@ -2650,6 +2866,8 @@ node[
 
 % 17 Anduril 2 UI ------------------------------------------------------
 % ----------------------------------------------------------------------
+{ [on background layer]
+
 \node (Anduril 2 UI)
 at (current page text area.north east)[
     andurilinfo,
@@ -2658,7 +2876,7 @@ at (current page text area.north east)[
 {
     \Huge\textbf{Andúril 2 UI}\\[8pt]
     \normalsize Andúril 2 Release 2025-07-07\\[3pt]
-    \normalsize Diagram Release Dark-04\\[4pt]
+    \normalsize Diagram Release Dark-05\\[4pt]
     Diagram Repository:\\
     https://github.com/dirtydancing/\\
     anduril-tikz-diagram-dark
@@ -2668,19 +2886,17 @@ at (current page text area.north east)[
 };
 
 % Aux LED Color for Voltage
-{ [on background layer]
-    \node (Aux LED Color for Voltage)[
-        voltagecolorinfo,
-        below=\nodespacev of Anduril 2 UI.south east,
-        anchor=north east
-    ]
-    {
-        \oneline{Aux LED Color for Voltage}
-        \spacingv
-        \textboxauxledcfv{}\\[4pt]
-        Single-color aux: fast-blink 3.3\textendash{}2.9V
-    };
-}
+\node (Aux LED Color for Voltage)[
+    voltagecolorinfo,
+    below=\nodespacev of Anduril 2 UI.south east,
+    anchor=north east
+]
+{
+    \oneline{Aux LED Color for Voltage}
+    \spacingv
+    \textboxauxledcfv{}\\[4pt]
+    Single-color aux: fast-blink 3.3\textendash{}2.9V
+};
 
 % Button Presses
 \node (Button Presses)[
@@ -2691,23 +2907,47 @@ at (current page text area.north east)[
 {
     \spacingnoextra
     \begin{configtblr}{
-        row{2-7}   = {rowsep=0pt},
-        row{8}     = {abovesep=2pt},
-        cell{8}{1} = {c=2}{}
+        row{2-7}     = {rowsep=0pt},
+        row{3}       = {belowsep=0.9pt}, % for basic use fit
+        row{Z}       = {abovesep=2pt},
+        cell{Z}{1}   = {c=2}{}
     }
         Button Presses\vphantom{Config} &\\
-        1C: & Click\\
-        1H: & Hold\\
+        \tikzmarknode{buttonpresses-1C}
+            {\textbasicuse{1C:}} &
+        \tikzmarknode{buttonpresses-Click}
+            {\textbasicuse{Click\hspace{0.015cm}}}\\
+        \tikzmarknode{buttonpresses-1H}
+            {\textbasicuse{1H:}} &
+        \tikzmarknode{buttonpresses-Hold}
+            {\textbasicuse{Hold}}\\
         2C: & Click, Click\\
         2H: & Click, Hold\\
         3C: & Click, Click, Click\\
         3H: & Click, Click, Hold\\
-        {\infotextadvanced{In a config menu, release}\\
-         \infotextadvanced{button after the desired}\\
-         \infotextadvanced{number of blinks; when}\\
-         \infotextadvanced{entering a value, 1H = 10C}} &\\
+        {\infotextadvancedconfigmenu{In a config menu, release}\\
+         \infotextadvancedconfigmenu{button after the desired}\\
+         \infotextadvancedconfigmenu{number of blinks; when}\\
+         \infotextadvancedconfigmenu{entering a value, 1H = 10C}} &\\
     \end{configtblr}
 };
+
+\node (Button Presses basic use fit)[
+    button presses basic use fit,
+    fit=(buttonpresses-1C)
+    (buttonpresses-Click)
+    (buttonpresses-1H)
+    (buttonpresses-Hold)
+]
+{};
+
+% Defaults vary by light
+\node (Defaults vary by light)[
+    defaultsvaryinfo,
+    below=0.1cm of Button Presses.south west,
+    anchor=north west
+]
+{Defaults vary by light.};
 
 % Legend
 \matrix (Legend)[
@@ -2716,65 +2956,68 @@ at (current page text area.north east)[
     matrix anchor=north east
 ]
 {
-    & All the user needs to know for basic use\vphantom{y}\\
+    & \textbasicuse{All the user needs to know
+      for basic use\vphantom{y}}\\
     & Simple UI and Advanced UI function\\
     & Simple UI function only\\
     & \infotextadvanced{Advanced UI function only}\\
     & Continuous effect\vphantom{y}\\
     & Momentary effect\\
     \normalsize\textbf{\inherited{}}&
-    \textcolor{inherited-text}{Inherited by Simple UI}\\
+    \textinherited{Inherited by Simple UI}\\
 };
 
-\draw (Legend-1-1.west) edge[
+\path (Legend-1-1.west) edge[
     -,
     anyline basic use legend,
+    shorten <=0.15pt, % out (0.3pt overhang)
+    shorten >=0.15pt, % in (0.3pt overhang)
     out=0,
     in=180
 ]
 node[
-    anybutton basic use,
+    anybutton basic use legend,
     pos=0.5
 ]
 {\footnotesize 1C} (Legend-1-1.east);
 
-\draw (Legend-2-1.west) edge[
+\path (Legend-2-1.west) edge[
     -,
     anyline legend,
     out=0,
     in=180
 ]
 node[
-    anybutton,
+    anybutton legend,
     pos=0.5
 ]
 {\footnotesize 1C} (Legend-2-1.east);
 
-\draw (Legend-3-1.west) edge[
+\path (Legend-3-1.west) edge[
     -,
     simpleline legend,
     out=0,
     in=180
 ]
 node[
-    simplebutton,
+    simplebutton legend,
     pos=0.5
 ]
 {\footnotesize 1C} (Legend-3-1.east);
 
-\draw (Legend-4-1.west) edge[
+\path (Legend-4-1.west) edge[
     -,
     advancedline legend,
     out=0,
     in=180
 ]
 node[
-    advancedbutton,
+    advancedbutton legend,
     pos=0.5
 ]
 {\footnotesize 1C} (Legend-4-1.east);
 
-\draw (Legend-5-1.west) edge[
+\path (Legend-5-1.west) edge[
     -,
     anyline legend,
     out=0,
@@ -2782,13 +3025,15 @@ node[
 ]
 (Legend-5-1.east);
 
-\draw (Legend-6-1.west) edge[
+\path (Legend-6-1.west) edge[
     -,
     anyline momentary legend,
     out=0,
     in=180
 ]
 (Legend-6-1.east);
+
+} % for ending on background layer
 
 \end{tikzpicture}
 
