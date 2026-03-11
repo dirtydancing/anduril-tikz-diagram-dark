@@ -21,4 +21,4 @@ The corresponding two commands are:
 
 `lualatex anduril-tikz-diagram-dark.tex`
 
-`pdfcrop --bbox '16 16 825 579' --margins 3 anduril-tikz-diagram-dark.pdf && pdftoppm -png -r 300 -singlefile anduril-tikz-diagram-dark-crop.pdf anduril-tikz-diagram-dark`
+`pdftocairo -png -singlefile -r 300 -W 3507 -H 2480 anduril-tikz-diagram-dark.pdf anduril-tikz-diagram-dark`
