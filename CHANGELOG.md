@@ -2,6 +2,10 @@
 
 ## Next
 
+## 2025-07-07.dark-06 (Date: 2026-05-04)
+
+- Adapted diagram-dark to updated diagram
+
 ## 2025-07-07.dark-05 (Date: 2026-03-11)
 
 - Adapted diagram-dark to updated diagram
