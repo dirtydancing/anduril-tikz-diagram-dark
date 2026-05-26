@@ -2,6 +2,11 @@
 
 ## Next
 
+## 2025-07-07.dark-08 (Date: 2026-05-26)
+
+- Increased basic use emphasis
+- Adjusted rounded corners
+
 ## 2025-07-07.dark-07 (Date: 2026-05-20)
 
 - Adapted diagram-dark to updated diagram
