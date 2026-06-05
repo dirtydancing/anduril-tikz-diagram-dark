@@ -2,6 +2,10 @@
 
 ## Next
 
+## 2025-07-07.dark-09 (Date: 2026-06-05)
+
+- Adjusted ramp image details
+
 ## 2025-07-07.dark-08 (Date: 2026-05-26)
 
 - Increased basic use emphasis
