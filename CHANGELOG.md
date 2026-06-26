@@ -2,6 +2,12 @@
 
 ## Next
 
+## 2025-07-07.dark-10 (Date: 2026-06-26)
+
+- Specified memory for 2H from Lockout
+- Specified thermal regulation
+- Adjusted lines to Momentary Mode
+
 ## 2025-07-07.dark-09 (Date: 2026-06-05)
 
 - Adjusted ramp image details
